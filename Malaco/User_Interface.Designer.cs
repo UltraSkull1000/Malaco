@@ -75,6 +75,13 @@
             this.leaveGuild = new System.Windows.Forms.Button();
             this.refreshGuilds = new System.Windows.Forms.Button();
             this.guildView = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.messagingTextBox = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.guildTreeView = new System.Windows.Forms.TreeView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,6 +107,12 @@
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guildView)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -200,6 +213,7 @@
             this.currentStatusMessage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tableLayoutPanel3.SetColumnSpan(this.currentStatusMessage, 2);
             this.currentStatusMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentStatusMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.currentStatusMessage.Location = new System.Drawing.Point(7, 147);
             this.currentStatusMessage.Margin = new System.Windows.Forms.Padding(6);
             this.currentStatusMessage.Name = "currentStatusMessage";
@@ -260,6 +274,7 @@
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.statusMessageList, 2);
             this.statusMessageList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusMessageList.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.statusMessageList.Location = new System.Drawing.Point(7, 182);
             this.statusMessageList.Margin = new System.Windows.Forms.Padding(6);
             this.statusMessageList.Name = "statusMessageList";
@@ -548,10 +563,11 @@
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tableLayoutPanel2.SetColumnSpan(this.tabControl1, 2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(4, 305);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.SelectedIndex = 1;
             this.tabControl1.Size = new System.Drawing.Size(622, 290);
             this.tabControl1.TabIndex = 3;
             // 
@@ -744,6 +760,89 @@
             this.guildView.TabIndex = 0;
             this.guildView.Text = "dataGridView1";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.splitContainer2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(614, 259);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Messaging";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.tableLayoutPanel10);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.guildTreeView);
+            this.splitContainer2.Size = new System.Drawing.Size(608, 253);
+            this.splitContainer2.SplitterDistance = 404;
+            this.splitContainer2.TabIndex = 0;
+            this.splitContainer2.Text = "splitContainer2";
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.9604F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.0396F));
+            this.tableLayoutPanel10.Controls.Add(this.messagingTextBox, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.textBox1, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.button1, 1, 1);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 2;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.1423F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.85771F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(404, 253);
+            this.tableLayoutPanel10.TabIndex = 0;
+            // 
+            // messagingTextBox
+            // 
+            this.tableLayoutPanel10.SetColumnSpan(this.messagingTextBox, 2);
+            this.messagingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.messagingTextBox.Location = new System.Drawing.Point(3, 3);
+            this.messagingTextBox.Name = "messagingTextBox";
+            this.messagingTextBox.Size = new System.Drawing.Size(398, 216);
+            this.messagingTextBox.TabIndex = 0;
+            this.messagingTextBox.Text = "";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 225);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Message #channel...";
+            this.textBox1.Size = new System.Drawing.Size(313, 23);
+            this.textBox1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(322, 225);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(79, 25);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Send";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // guildTreeView
+            // 
+            this.guildTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guildTreeView.Location = new System.Drawing.Point(0, 0);
+            this.guildTreeView.Name = "guildTreeView";
+            this.guildTreeView.Size = new System.Drawing.Size(200, 253);
+            this.guildTreeView.TabIndex = 0;
+            // 
             // User_Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -785,6 +884,13 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guildView)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -838,6 +944,13 @@
         private System.Windows.Forms.Button leaveGuild;
         private System.Windows.Forms.Button refreshGuilds;
         private System.Windows.Forms.DataGridView guildView;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.RichTextBox messagingTextBox;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TreeView guildTreeView;
     }
 }
 

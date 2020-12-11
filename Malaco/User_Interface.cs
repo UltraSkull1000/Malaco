@@ -76,13 +76,28 @@ namespace Malaco
                 Invoke(new Action<string, System.Drawing.Color, bool>(PostToConsole), inp, col, showTime);
             }
         }
+        public void PostToMessageBox(SocketMessage message)
+        {
+            if (!InvokeRequired)
+            {
+                messagingTextBox.SuspendLayout();
+                messagingTextBox.SelectionColor = System.Drawing.Color.PowderBlue;
+                messagingTextBox.AppendText($"{DateTime.Now.ToString("s")} | {message.Author.Username} > {message.Content}\n");
+                messagingTextBox.ScrollToCaret();
+                messagingTextBox.ResumeLayout();
+            }
+            else
+            {
+                Invoke(new Action<SocketMessage>(PostToMessageBox), message);
+            }
+        }
         public void UpdateElements(DiscordSocketClient client)
         {
             if (!InvokeRequired)
             {
                 try
                 {
-                    if(client.CurrentUser != null)
+                    if (client.CurrentUser != null)
                     {
                         if (client.CurrentUser.GetAvatarUrl() != null) botIcon.LoadAsync(client.CurrentUser.GetAvatarUrl());
                         else botIcon.LoadAsync(client.CurrentUser.GetDefaultAvatarUrl());

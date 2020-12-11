@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using System.Threading.Tasks;
 using Malaco;
+using Malaco.Serializables;
 
 namespace Malaco.Modules
 {
@@ -55,19 +56,28 @@ namespace Malaco.Modules
                 Name = "__Commands__",
                 Value =
                 $"`{User_Interface.prefix}info` - *Sends you information on the bot* \n" +
-                $"`{User_Interface.prefix}help` - *Sends you a list of commands* \n" 
-                //$"`{User_Interface.prefix}join` - *Joins the channel you are currently in* \n" +
-                //$"`{User_Interface.prefix}leave` - *Leaves the channel you are currently in* \n" +
-                //$"`{User_Interface.prefix}play {{query}}` - *Plays the requested song* \n" +
-                //$"`{User_Interface.prefix}stop` - *Stops the music immediately* \n" +
-                //$"`{User_Interface.prefix}skip` - *Skips the current song* \n" +
-                //$"`{User_Interface.prefix}volume {{value(0-150)}}` - *Sets the Music Volume* \n" +
-                //$"`{User_Interface.prefix}pause` - *Pauses the Music* \n" +
-                //$"`{User_Interface.prefix}resume` - *Resumes the Music* \n"
+                $"`{User_Interface.prefix}help` - *Sends you a list of commands* \n" +
+                $"`{User_Interface.prefix}stats` - *Sends you your dice roll averages* \n" +
+                $"`{User_Interface.prefix}stats {{@user}}` - *Sends you that user's dice roll averages* \n" +
+                $"`{User_Interface.prefix}roll {{query}}` - *Rolls your query* \n" +
+                $"Dice Roll Query Examples: `d20`, `3d8`, `8d6+4`, `d4 +2`\n" +
+                $"`{User_Interface.prefix}rollstats` - *Asks what method you would like, then Rolls your stats!* \n" +
+                $"`{User_Interface.prefix}rollstats {{query}}` - *Rolls your stats using the specified method* \n" 
             };
             e.AddField(one);
 
             await ReplyAsync("", embed: e.Build());
+        }
+
+        [Command("stats")]
+        public async Task Stats()
+        {
+            await ReplyAsync(embed: UserData.GetUserData(Context.User.Id)._rollTracker.GetStatsEmbed(Context));
+        }
+        [Command("stats")]
+        public async Task Stats(SocketGuildUser user)
+        {
+            await ReplyAsync(embed: UserData.GetUserData(user.Id)._rollTracker.GetStatsEmbed(Context));
         }
     }
 }

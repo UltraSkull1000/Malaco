@@ -3,7 +3,6 @@ using Discord;
 using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
-using Malaco.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -39,7 +38,6 @@ namespace Malaco
             _services = SetupServices();
 
             _commandService.AddModulesAsync(Assembly.GetEntryAssembly(), services: _services);
-            _services.GetRequiredService<MusicService>().InitializeAsync().GetAwaiter().GetResult();
 
             _ui.PostToConsole($"Success! Command Handler is Initialized! Starting Command Handler!", System.Drawing.Color.Lime);
             _client.MessageReceived += HandleCommandAsync;
@@ -65,20 +63,18 @@ namespace Malaco
             => new ServiceCollection()
             .AddSingleton(_client)
             .AddSingleton(_commandService)
-            .AddSingleton<LavaRestClient>()
-            .AddSingleton<LavaSocketClient>()
-            .AddSingleton<MusicService>()
             .AddSingleton<InteractiveService>()
             .BuildServiceProvider();
 
         int index = 0;
+        string[] messages;
         private void PlayingTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             Task.Run(async () =>
             {
                 try
                 {
-                    string[] messages = _ui.messages.Where(x => x != "").ToArray();
+                    if(messages == null) messages = _ui.messages.Where(x => x != "").Shuffle().ToArray();
                     if (messages.Count() == 0)
                     {
                         await _client.SetGameAsync("");
@@ -89,7 +85,11 @@ namespace Malaco
                         await _client.SetGameAsync(messages[index] + $" | {User_Interface.prefix}help for commands!");
 
                         index++;
-                        if (index >= messages.Count()) index = 0;
+                        if (index >= messages.Count()) 
+                        { 
+                            index = 0;
+                            messages = _ui.messages.Where(x => x != "").Shuffle().ToArray();
+                        }
                     }
                 }
                 catch (Exception e)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace Malaco
@@ -75,6 +76,35 @@ namespace Malaco
                 characters.Add($"{strike}{c}");
             }
             return string.Join(String.Empty, characters);
+        }
+    }
+
+    static class ListExtensions
+    {
+        private static Random rng = new Random();
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> list)
+        {
+            var l = list.ToList();
+            int n = l.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = l[k];
+                l[k] = l[n];
+                l[n] = value;
+            }
+            return l;
+        }
+    }
+    
+    static class OtherExtensions
+    {
+        public static Random rand = new Random();
+        public static ulong LongRandom(int min, int max)
+        {
+            ulong result = (ulong)rand.Next(min, max);
+            return result;
         }
     }
 }
